@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+    @total_comments = Comment.count
   end
 
   def show
