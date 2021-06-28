@@ -1,19 +1,32 @@
+<h2>Add a comment:</h2>
 <%= form_with model: [ @article, @article.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-
-  <p>
-    <%= form.label :status %><br>
-    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-  </p>
-
+  <%#%>
+  <div class="form-group">
+    <%= form.label :commenter, "Title:"%>
+    <div class="col-md-12">
+      <%= form.text_field :commenter, class: "form-control" %>
+    </div>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= form.label :body, "Body:" %>
+    <div class="col-md-12">
+      <%= form.text_area :body, class: "form-control", :size =>"1x4" %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-4">
+      <p>Status</p>
+      <%= form.select :status, options_for_select([
+      ["public"],  "private", "archived"]),{}, { class: "form-select form-select-sm" }  %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <%= form.submit "Send ", class: "btn btn-default btn-secondary" %>
+    </div>
+  </div>
+  <br>
 <% end %>
