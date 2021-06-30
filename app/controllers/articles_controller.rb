@@ -6,11 +6,9 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
     @total_comments = Comment.count
-    @total_articles = Article.all.count
   end
 
   def show_user_articles
-    @total_articles = current_user.articles.all.count
     @articles = current_user.articles
   end
 
