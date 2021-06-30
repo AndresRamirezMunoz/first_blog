@@ -6,6 +6,12 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
     @total_comments = Comment.count
+    @total_articles = Article.select{ |art| art.user == current_user}.size
+  end
+
+  def show_user_articles
+    @total_articles = Article.select{ |art| art.user == current_user}.size
+    @articles = current_user.articles
   end
 
   def show
@@ -18,6 +24,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.user=current_user
 
     if @article.save
       redirect_to @article

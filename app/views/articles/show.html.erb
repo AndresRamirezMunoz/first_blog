@@ -8,6 +8,8 @@
           <div class="card-body">
             <div class="row">
               <div class="col-8">
+                <h5>By: <%= @article.user.email %></h5>
+                <br>
                 <h5><%= @article.title %></h5>
               </div>
               <div class="col-4">
@@ -54,7 +56,7 @@
       <div class="col-md-8">
         <div class="card mb-4 box-shadow">
           <br>
-          <h2>&nbsp;&nbsp;Comments</h2>
+          <h2>&nbsp;&nbsp;Comments (<%=@article.comments.count %>) </h2>
           <div class="card-body">
             <%= render @article.comments %>
             <%# Add commmentersd%>
