@@ -10,64 +10,60 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   </head>
   <%# Navbar %>
-  <div class="collapse bg-dark" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">About</h4>
-          <p class="text-muted">Add some information about the album below, the author, or any other background context.
-            Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+  <header>
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4 class="text-white">About</h4>
+            <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+          </div>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4 class="text-white">Contact</h4>
+            <% if signed_in? %>
+              <p class="text-white">Welcome <%=current_user.email %> </p>
+              <%= link_to destroy_user_session_path, method: :delete, class: "link" do %>
+                <i class="fas fa-user-times fa-lg text-white"></i><strong class="text-white">&nbsp;Log uot</strong><br>
+              <% end %>
+            <% else %>
+              <%= link_to new_user_session_path, class: "link" do %>
+                <i class="fas fa-sign-in-alt fa-lg text-white"></i><strong class="text-white">&nbsp;Log in</strong><br>
+              <% end %>
+              <%= link_to new_user_registration_path, class: "link" do %>
+                <i class="fas fa-user-plus fa-lg text-white"></i><strong class="text-white">&nbsp;Sing up</strong><br>
+              <% end %>
+            <% end %>
+          </div>
         </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-white">Contact</h4>
+      </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark box-shadow">
+      <div class="container d-flex justify-content-between">
+        <div class="row text-white">
+          <div class="col">
+            <%= link_to root_path, class: "link" do %>
+              <i class="fas fa-home fa-2x text-white"></i>
+            <% end %>
+          </div>
           <% if signed_in? %>
-            <p class="text-white">Welcome <%=current_user.email %> </p>
-            <%= link_to destroy_user_session_path, method: :delete, class: "link" do %>
-              <i class="fas fa-user-times fa-lg text-white"></i><strong class="text-white">&nbsp;Log uot</strong><br>
-            <% end %>
-          <% else %>
-            <%= link_to new_user_session_path, class: "link" do %>
-              <i class="fas fa-sign-in-alt fa-lg text-white"></i><strong class="text-white">&nbsp;Log in</strong><br>
-            <% end %>
-            <%= link_to new_user_registration_path, class: "link" do %>
-              <i class="fas fa-user-plus fa-lg text-white"></i><strong class="text-white">&nbsp;Sing up</strong><br>
-            <% end %>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="navbar navbar-dark bg-dark box-shadow">
-  <div class="container d-flex justify-content-between">
-    <div class="row text-white">
-      <div class="col">
-        <%= link_to root_path, class: "link" do %>
-          <i class="fas fa-home fa-2x text-white"></i>
-        <% end %>
-      </div>
-      <% if signed_in? %>
-        <div class="col">
-          <%= link_to new_article_path, class: "link" do %>
-            <i class="far fa-plus-square fa-2x text-white""></i>
+            <div class="col">
+              <%= link_to new_article_path, class: "link" do %>
+                <i class="far fa-plus-square fa-2x text-white""></i>
+              <% end %>
+            </div>
+            <div class="col">
+              <%= link_to user_articles_path(current_user), class: "link" do %>
+                <i class="fas fa-clipboard-list fa-2x text-white"></i>
+              <% end %>
+            </div>
           <% end %>
         </div>
-        <div class="col">
-          <%= link_to user_articles_path(current_user), class: "link" do %>
-            <i class="fas fa-clipboard-list fa-2x text-white"></i>
-          <% end %>
-        </div>
-        <div class="col">
-        <% end %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       </div>
     </div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-</div>
-</nav>
-<%# %>
-<%= yield %>
+  </header>
+  <%= yield %>
 </body>
 </html>
