@@ -2,11 +2,10 @@
 <section class="jumbotron text-center">
   <div class="container">
     <br>
-    <h4>The blog has <%= Article.public_count %> articles and counting!</h4>
+    <h4>Your blog has <%= @articles.count %> articles and counting!</h4>
     <br>
   </div>
 </section>
-<%# Articles %>
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row">

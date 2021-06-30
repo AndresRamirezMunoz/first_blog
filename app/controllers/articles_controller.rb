@@ -1,10 +1,15 @@
 class ArticlesController < ApplicationController
 
-  http_basic_authenticate_with name: "root", password: "root", except: [:index, :show]
+
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @articles = Article.all
     @total_comments = Comment.count
+  end
+
+  def show_user_articles
+    @articles = current_user.articles
   end
 
   def show
@@ -17,6 +22,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.user_id = current_user.id
 
     if @article.save
       redirect_to @article

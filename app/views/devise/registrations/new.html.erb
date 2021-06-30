@@ -1,0 +1,44 @@
+<div class="album py-5 bg-light">
+  <div class="col-md-12">
+    <div class="card-body d-flex justify-content-center">
+      <div class="col-md-4">
+        <div class="card box-shadow">
+          <div class="container">
+            <br>
+            <h2 class="text-center">Sign up</h2>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+              <div class="field">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, class:"form-control" %>
+              </div>
+              <br>
+              <div class="field">
+                <%= f.label :password %>
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br>
+                <%= f.password_field :password, autocomplete: "new-password",  class:"form-control" %>
+              </div>
+              <br>
+              <div class="field">
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password",  class:"form-control" %>
+              </div>
+              <br>
+              <div class="col-md-12 text-center">
+                <div class="actions">
+                  <%= f.submit "Sign up", class:"btn btn-secondary" %>
+                  <br>
+                  or<br>
+                  <%= render "devise/shared/links" %>
+                  <br>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
