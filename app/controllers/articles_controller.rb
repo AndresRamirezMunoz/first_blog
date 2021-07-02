@@ -16,6 +16,9 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
+  def show_user_following
+  end
+
   def new
     @article = Article.new
   end
