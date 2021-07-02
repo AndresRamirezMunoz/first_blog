@@ -1,7 +1,23 @@
-<div class="col-md-6 offset-md-3">
-  <%= render 'users/follow_form' if signed_in? %>
-</div>
-<%# Info articles %>
+<section class="jumbotron text-center">
+  <div class="container">
+    <div class="row py-3">
+      <div class="col-md-6 offset-md-3">
+        <%=@user.email %>
+        <br>
+        <strong><%= @user.articles.count %></strong> articles&nbsp;&nbsp;&nbsp;
+        <strong><%= @user.followers.count %></strong>
+        followers
+        <strong><%= @user.followings.count %></strong>
+        following&nbsp;&nbsp;&nbsp;
+      </div>
+      <div class="row py-2">
+        <div class="col-md-6 offset-md-3">
+          <h5><%= @title %></h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row">

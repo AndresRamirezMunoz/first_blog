@@ -2,7 +2,11 @@
   <div class="row">
     <div class="col-8">
       <p>
-        <strong> <%= comment.user.email %>&nbsp;</strong>
+        <% if signed_in? %>
+          <strong> <%= link_to comment.user do %> <%= comment.user.email %>  <% end %>&nbsp;</strong>
+        <% else %>
+          <strong> <%= comment.user.email %> &nbsp;</strong>
+        <% end %>
         <%= comment.commenter %>:
         &nbsp;<%= comment.body %>
       </p>

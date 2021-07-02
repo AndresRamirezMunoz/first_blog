@@ -47,8 +47,13 @@
           </div>
           <% if signed_in? %>
             <div class="col">
+              <%= link_to users_path, class: "link" do %>
+                <i class="fas fa-search fa-2x text-white"></i>
+              <% end %>
+            </div>
+            <div class="col">
               <%= link_to new_article_path, class: "link" do %>
-                <i class="far fa-plus-square fa-2x text-white""></i>
+                <i class="far fa-plus-square fa-2x text-white"></i>
               <% end %>
             </div>
             <div class="col">
@@ -64,6 +69,7 @@
       </div>
     </div>
   </header>
-  <%= yield %>
-</body>
+  <body>
+    <%= yield %>
+  </body>
 </html>
