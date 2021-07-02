@@ -1,0 +1,41 @@
+<section class="jumbotron text-center">
+  <div class="container">
+    <div class="row py-3">
+      <div class="col-md-6 offset-md-3">
+        <%=@user.email %>
+        <br>
+        <strong><%= @user.articles.count %></strong> articles&nbsp;&nbsp;&nbsp;
+        <strong><%= @user.followers.count %></strong>
+        followers
+        <strong><%= @user.followings.count %></strong>
+        following&nbsp;&nbsp;&nbsp;
+      </div>
+      <div class="row py-2">
+        <div class="col-md-6 offset-md-3">
+          <h5><%= @title %></h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <% @articles.each do |article| %>
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <%= link_to article do %>
+              <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]"
+                    style="height: 225px; width: 100%; display: block;" src="http://placeimg.com/450/225/arch" data-holder-rendered="true">
+            <% end %>
+            <div class="card-body">
+              <p class="card-text">
+                <%=article.title %>. By: <%=article.user.email %><br>
+                This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="col-md-6 offset-md-3">
+  <%= render 'users/follow_form' %>
+</div>
+<div class="album py-2 bg-light">
+  <div class="col-md-12">
+    <div class="card-body d-flex justify-content-center">
+      <div class="col-md-8">
+        <div class="card box-shadow">
+          <div class="container">
+            <div class="row">
+              <% unless @users.nil? %>
+                <% @users.each do |user| %>
+                  <div class="col-md-4 py-3">
+                    <div class="card mb-4 py-3 box-shadow text-center">
+                      <%= link_to user do %>
+                        <img class="rounded-circle" src="http://placeimg.com/60/60/people"
+                      alt="Generic placeholder image" width="60" height="60">
+                      <% end %>
+                      <div class="card-body">
+                        <p class="card-text">
+                          <strong>User: </strong> <%= user.email.split("@")[0] %>
+                          <div id="follow_form">
+                            <% if current_user.followings.include?(user) %>
+                              <%= button_to "unfollow",  unfollow_user_path(user), :method => "get" %>
+                            <% else %>
+                              <%= button_to "follow",  follow_user_path(user), :method => "get" %>
+                            <% end %>
+                          </div>
+                          <br>
+                          <strong><%= user.articles.count %></strong> articles&nbsp;&nbsp;&nbsp;<br>
+                          <strong><%= user.followers.count %></strong> followers&nbsp;&nbsp;&nbsp;
+                          <strong><%= user.followings.count %></strong> following
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
