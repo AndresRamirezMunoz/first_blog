@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    puts params
     @user = User.find(params[:id])
     @articles = @user.articles
     user_path(@user)
@@ -30,9 +29,8 @@ class UsersController < ApplicationController
   end
 
   def unfollow
-    puts "--" * 20
     follow = Follow.where(follower_id: current_user.id, followed_user_id: params[:id])
-    puts follow[0].destroy
+    follow[0].destroy
     redirect_back(fallback_location: root_path)
   end
 
