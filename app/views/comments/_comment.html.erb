@@ -3,7 +3,7 @@
     <div class="col-8">
       <p>
         <% if signed_in? %>
-          <strong> <%= link_to @article.user do %> <%= comment.user.email %>  <% end %>&nbsp;</strong>
+          <strong> <%= link_to comment.user do %> <%= comment.user.email %>  <% end %>&nbsp;</strong>
         <% else %>
           <strong> <%= comment.user.email %> &nbsp;</strong>
         <% end %>
